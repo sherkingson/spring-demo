@@ -7,6 +7,11 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 	
-	<bean id="screwDriver" class="screwDriver.ScrewDriver"></bean>
+	<bean id="ScrewHelper" class="screwDriver.ScrewHelper">
+		<property name="Screw" ref="YelloScrew" />
+	</bean>
+	
+	<bean id="RedScrew" class="screwDriver.RedScrew" />
+	<bean id="YelloScrew" class="screwDriver.YelloScrew" />
 
 </beans>
