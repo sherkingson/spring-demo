@@ -17,15 +17,25 @@ public class HelloMyBatis {
 		//创建SqlSessionFactory 
 		SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
 		//获取Session
-		SqlSession session = sessionFactory.openSession();
+		SqlSession session = sessionFactory.openSession(true);
 		
 		try {
 			//获取操作类
 			GetUserInfo getUserInfo = session.getMapper(GetUserInfo.class);
-			//完成查询操作
-			User user = getUserInfo.getUser(10);
-			
+			//完成操作
+			//增加
+			User user = new User("chunfen", "nuaa");
+			getUserInfo.addUser(user);
+            //查询
 			System.out.println(user.getId()+":"+user.getname()+","+user.getSchool());
+            //修改
+			user.setname("zhangsan");
+			getUserInfo.updateUser(user);
+			System.out.println(user.getId()+":"+user.getname()+","+user.getSchool());
+			//删除
+		//	getUserInfo.deleteUser(user.getId());
+			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

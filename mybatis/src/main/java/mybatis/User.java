@@ -4,6 +4,18 @@ public class User {
 	private int id;
 	private String name;
 	private String school;
+	
+	public User(int id, String name, String school) {
+		this.id = id;
+		this.name = name;
+		this.school = school;
+	}
+	
+	public User(String name, String school) {
+		this.name = name;
+		this.school = school;
+	}
+
 	public int getId() {
 		return id;
 	}

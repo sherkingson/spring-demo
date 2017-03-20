@@ -3,7 +3,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.GetUserInfo">
+	
 	<select id="getUser" parameterType="int" resultType="mybatis.User">
 		select id,name,school from information where id = #{id}
     </select>
+
+    <insert id="addUser" parameterType="mybatis.User" useGeneratedKeys="true" keyProperty="id" >
+    	insert into information (name,school)values(#{name},#{school})
+    </insert>
+ 
+ 	<update id="updateUser" parameterType="mybatis.User">
+		update information set name=#{name},school=#{school} where id = #{id}
+    </update>
+ 	
+ 	<delete id="deleteUser" parameterType="mybatis.User">
+		delete from information where id = #{id}
+    </delete>
 </mapper>
